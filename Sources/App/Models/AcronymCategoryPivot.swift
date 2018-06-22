@@ -1,6 +1,6 @@
-import FluentMySQL
+import FluentPostgreSQL
 
-final class AcronymCategoryPivot: MySQLUUIDPivot {
+final class AcronymCategoryPivot: PostgreSQLUUIDPivot {
     var id: UUID?
     var acronymID: Acronym.ID
     var categoryID: Category.ID
@@ -18,7 +18,7 @@ final class AcronymCategoryPivot: MySQLUUIDPivot {
 }
 
 extension AcronymCategoryPivot: Migration {
-    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+    static func prepare(on connection: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: connection) { builder in
             try addProperties(to: builder)
             builder.reference(from: \.acronymID, to: \Acronym.id)

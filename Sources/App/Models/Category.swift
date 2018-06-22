@@ -1,5 +1,5 @@
 import Vapor
-import FluentMySQL
+import FluentPostgreSQL
 
 final class Category: Codable {
     var id: Int?
@@ -10,7 +10,7 @@ final class Category: Codable {
     }
 }
 
-extension Category: MySQLModel {}
+extension Category: PostgreSQLModel {}
 extension Category: Content {}
 extension Category: Migration {}
 extension Category: Parameter {}

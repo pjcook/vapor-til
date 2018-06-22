@@ -1,6 +1,6 @@
 import Foundation
 import Vapor
-import FluentMySQL
+import FluentPostgreSQL
 
 final class User: Codable {
     var id: UUID?
@@ -13,7 +13,7 @@ final class User: Codable {
     }
 }
 
-extension User: MySQLUUIDModel {}
+extension User: PostgreSQLUUIDModel {}
 extension User: Content {}
 extension User: Migration {}
 extension User: Parameter {}

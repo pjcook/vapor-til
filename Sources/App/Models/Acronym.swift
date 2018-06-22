@@ -1,5 +1,5 @@
 import Vapor
-import FluentMySQL
+import FluentPostgreSQL
 
 final class Acronym: Codable {
     var id: Int?
@@ -14,12 +14,12 @@ final class Acronym: Codable {
     }
 }
 
-extension Acronym: MySQLModel {}
+extension Acronym: PostgreSQLModel {}
 extension Acronym: Content {}
 extension Acronym: Parameter {}
 
 extension Acronym: Migration  {
-    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+    static func prepare(on connection: PostgreSQLConnection) -> Future<Void> {
         return Database.create(self, on: connection) { builder in
             try addProperties(to: builder)
             builder.reference(from: \.userID, to: \User.id)
